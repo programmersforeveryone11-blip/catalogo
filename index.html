@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glow Up Delivery - Catálogo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .header-text {
+      color: white;
+      -webkit-text-stroke: 3px #2b2b73;
+      text-shadow: 4px 4px 0px #2b2b73;
+      font-family: 'Arial Black', sans-serif;
+    }
+
+    /* Ajuste para el rayo y elementos absolutos */
+    .zap-icon {
+      filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.2));
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-b from-[#e6effc] to-[#f4f8ff] font-sans text-gray-800 pb-16 overflow-x-hidden">
+
+  <div class="max-w-[1100px] mx-auto px-6 pt-6">
+
+    <div class="flex justify-between items-start mb-6">
+      <div>
+        <div class="relative inline-block">
+          <h1 class="header-text text-6xl md:text-8xl tracking-tight italic relative z-10 uppercase">
+            GL<span class="mr-4">O</span>W UP
+          </h1>
+          <div class="absolute top-1/2 left-[35%] -translate-y-1/2 z-20">
+            <i data-lucide="zap"
+              class="w-16 h-16 md:w-24 md:h-24 text-yellow-400 fill-yellow-400 rotate-12 zap-icon"></i>
+          </div>
+        </div>
+        <p class="text-[#1e2875] text-xl font-bold mt-2 ml-2 tracking-wide">
+          Special Opportunity in December
+        </p>
+      </div>
+
+      <div class="hidden md:flex flex-col items-end pt-4">
+        <h2 class="text-3xl font-black text-red-600 italic tracking-tighter">
+          GLOW<span class="text-[#1e2875]">DELIVERY</span>
+        </h2>
+        <p class="text-[#1e2875] text-xs font-bold uppercase tracking-widest">
+          Index Delivery
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+
+      <div
+        class="md:col-span-2 bg-[#2b2b73] rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden shadow-xl">
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-white opacity-5 rounded-full blur-2xl pointer-events-none">
+        </div>
+
+        <h2 class="text-white text-4xl md:text-5xl font-black uppercase tracking-wide leading-tight z-10">
+          Discount Up To <span class="text-6xl text-yellow-400 italic">15%</span>
+        </h2>
+
+        <div class="mt-6 z-10">
+          <span
+            class="bg-[#4a4b9c] text-white px-5 py-2 rounded-full font-semibold tracking-wider shadow-inner text-sm md:text-base">
+            Promo Period : 2023/12/01 ~ 2023/12/31
+          </span>
+        </div>
+      </div>
+
+      <div id="featured-container" class="md:col-span-1">
+      </div>
+    </div>
+
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    </div>
+
+  </div>
+
+  <script>
+    // Data exactly as provided
+    const featuredProduct = {
+      id: 0,
+      title: "BYOMA Hydrating Serum 30ml",
+      bullets: [
+        { text: "Tri-Ceramide Complex", color: "text-blue-400" },
+        { text: "Squalane", color: "text-pink-400" },
+        { text: "Glycerin", color: "text-blue-300" }
+      ],
+      oldPrice: "25",
+      newPrice: "19",
+      image: "haggg.png",
+      fallback: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=300&q=80"
+    };
+
+    const products = [
+      { id: 1, title: "Starface Blue Patches", bullets: [{ text: "Cute Star Shape", color: "text-blue-500" }, { text: "Absorbs Fluid", color: "text-blue-500" }, { text: "Reduces Redness", color: "text-blue-500" }], oldPrice: "15", newPrice: "12", image: "afhhh.png", fallback: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&w=300&q=80" },
+      { id: 2, title: "Classic Yellow Hydro-Stars", bullets: [{ text: "Vegan Skincare", color: "text-yellow-500" }, { text: "Cruelty-Free", color: "text-yellow-500" }, { text: "32 Count", color: "text-yellow-500" }], oldPrice: "18", newPrice: "14", image: "starface-yellow.jpg", fallback: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=300&q=80" },
+      { id: 3, title: "Light Pink Star Patches", bullets: [{ text: "Mirror Storage Box", color: "text-pink-400" }, { text: "Acne Spot Stickers", color: "text-pink-400" }, { text: "Temporary Use", color: "text-pink-400" }], oldPrice: "16", newPrice: "13", image: "pink-stars.jpg", fallback: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=300&q=80" },
+      { id: 4, title: "Hot Pink Pimple Patches", bullets: [{ text: "Fast Acting Formula", color: "text-pink-600" }, { text: "Gentle on Skin", color: "text-pink-600" }, { text: "Travel Friendly Box", color: "text-pink-600" }], oldPrice: "17", newPrice: "14", image: "sjjj.png", fallback: "https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&w=300&q=80" },
+      { id: 5, title: "CeraVe Hydrating Cleanser 400ml", bullets: [{ text: "Hyaluronic Acid", color: "text-green-600" }, { text: "Fragrance Free", color: "text-green-600" }], oldPrice: "22", newPrice: "18", image: "cerave.jpg", fallback: "https://images.unsplash.com/photo-1608280628285-d60d3fc3d806?auto=format&fit=crop&w=300&q=80" },
+      { id: 6, title: "The Ordinary Peeling Solution", bullets: [{ text: "AHA 30%", color: "text-red-500" }, { text: "BHA 2%", color: "text-red-500" }], oldPrice: "10", newPrice: "8", image: "ordinary.jpg", fallback: "https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=300&q=80" },
+      { id: 7, title: "La Roche-Posay Anthelios SPF", bullets: [{ text: "Invisible Fluid", color: "text-orange-500" }, { text: "SPF 50+", color: "text-orange-500" }], oldPrice: "35", newPrice: "29", image: "spf.jpg", fallback: "https://images.unsplash.com/photo-1556228720-192a6af4e865?auto=format&fit=crop&w=300&q=80" },
+      { id: 8, title: "COSRX Snail Mucin Power Essence", bullets: [{ text: "96% Snail Secretion", color: "text-yellow-600" }, { text: "Repairing Essence", color: "text-yellow-600" }], oldPrice: "25", newPrice: "21", image: "cosrx.jpg", fallback: "https://images.unsplash.com/photo-1601049541289-9b1b7ce82d1c?auto=format&fit=crop&w=300&q=80" },
+      { id: 9, title: "Neutrogena Hydro Boost Water Gel", bullets: [{ text: "Water Gel Formula", color: "text-blue-500" }, { text: "Oil-Free", color: "text-blue-500" }], oldPrice: "24", newPrice: "19", image: "neutrogena.jpg", fallback: "https://images.unsplash.com/photo-1570194065650-d99fb4b8ccb0?auto=format&fit=crop&w=300&q=80" }
+    ];
+
+    // Function to create card HTML
+    function createProductCard(product) {
+      const bulletsHtml = product.bullets.map(b => `
+                <li class="flex items-center text-xs text-gray-600 font-medium">
+                    <span class="${b.color} mr-1 text-sm">●</span> ${b.text}
+                </li>
+            `).join('');
+
+      return `
+                <div class="bg-white rounded-[1.5rem] shadow-sm hover:shadow-xl transition-shadow duration-300 relative h-64 overflow-hidden border border-blue-50">
+                    <div class="p-5 flex flex-col h-full w-[65%]">
+                        <h3 class="text-[#1e2875] font-bold text-lg leading-tight mb-2 z-10">
+                            ${product.title}
+                        </h3>
+                        <ul class="space-y-1 z-10">
+                            ${bulletsHtml}
+                        </ul>
+                    </div>
+
+                    <img 
+                        src="${product.image}" 
+                        alt="${product.title}"
+                        class="absolute right-0 top-1/2 -translate-y-1/2 w-36 h-36 object-contain z-0 drop-shadow-md"
+                        onerror="this.src='${product.fallback}'"
+                    />
+
+                    <div class="absolute bottom-0 left-0 bg-[#2b2b73] rounded-tr-[2rem] px-5 py-2 min-w-[110px] text-white flex flex-col justify-center z-20">
+                        <div class="flex items-end">
+                            <div class="flex flex-col mr-1">
+                                <span class="text-[10px] font-bold leading-none mb-0.5">$</span>
+                                <span class="text-[10px] font-bold leading-none">$</span>
+                            </div>
+                            <div class="flex flex-col -ml-1">
+                                <span class="text-pink-400 line-through text-xs font-bold leading-none mb-1">
+                                    ${product.oldPrice}
+                                </span>
+                                <div class="flex items-baseline leading-none">
+                                    <span class="text-4xl font-black">${product.newPrice}</span>
+                                    <span class="text-[9px] ml-1 font-semibold">/PCS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+    }
+
+    // Render everything
+    document.getElementById('featured-container').innerHTML = createProductCard(featuredProduct);
+    document.getElementById('product-grid').innerHTML = products.map(p => createProductCard(p)).join('');
+
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+
+</html>
